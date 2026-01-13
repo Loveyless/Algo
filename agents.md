@@ -45,6 +45,11 @@
   - 避免在热路径里使用 `try/catch`、`arguments`、过度闭包捕获（在解释时强调即可）。
 
 ## 🧾 Output Contract (Mandatory) | 输出契约（强制）
+## 文件命名约定
+
+- 题目/测试文件：同名 + ` question` 后缀，例如 `QuickSort question.js`
+- 解题/实现文件：同名无后缀，例如 `QuickSort.js`
+- 默认约定：`question` 文件只放题面与测试；实现代码写在无后缀文件里；测试通过 `require/import` 调用实现
 
 除非我明确要求跳过某些部分，否则每次回答都必须满足：
 
@@ -184,3 +189,4 @@ _(参考此表进行出题和映射)_
 
 1. 确认已加载 **"Skin vs. Core"** 核心法则。
 2. 告诉我：**“Ready to compile. 请输入你想攻克的题目、代码片段，或者直接说‘来个挑战’。”**
+
