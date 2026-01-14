@@ -49,38 +49,4 @@ class Scheduler {
       });
   }
 }
-
-/*测试代码*/
-const timeout = (time) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-
-const scheduler = new Scheduler();
-
-const addTask = (time, order) => {
-  scheduler.add(() => timeout(time)).then(() => console.log(order));
-};
-
-addTask(1000, '1');
-addTask(500, '2');
-addTask(300, '3');
-addTask(400, '4');
-// 预期输出：2 3 1 4
-
-/*
-附加说明
-
-1) 为什么 add 接收的是 “() => Promise” 而不是直接接收 Promise？
-   - 如果你传的是 Promise，那它在 add 的那一刻就已经开始执行了，调度器就失去“控制开始时机”的能力。
-   - 传函数可以把执行延后到 startNext()，这样才能严格做到并发上限。
-
-2) 调度器的核心流程是什么？
-   - add：把任务包装成 { task, resolve, reject } 放进等待队列，然后尝试调度
-   - tryRun：只要还有空位，就启动下一个任务
-   - startNext：占用一个名额 -> 执行 task -> 完成后释放名额 -> 再次尝试调度
-
-3) 为什么要 Promise.resolve().then(task)？
-   - 有些 task 可能会同步 throw，或者返回一个非 Promise 值；这一层能把它们统一成 Promise 链路处理
-   - 无论成功/失败，finally 都会释放名额，避免任务失败后“卡住不再调度”
-*/
+module.exports = { Scheduler };

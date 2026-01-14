@@ -1,15 +1,10 @@
-// JS实现一个带并发限制的异步调度器Scheduler，
-//保证同时运行的任务最多有两个。
-//完善代码中scheduler类，
-//使得测试程序能正确输出
+// JS 实现一个带并发限制的异步调度器 Scheduler。
+// 目标：保证同时运行的任务最多有两个。
+// 请在 ./Scheduler.js 中实现 Scheduler，使得本文件测试能正确输出。
 
-class Scheduler {
-  constructor() {}
+const { Scheduler } = require('./Scheduler');
 
-  add(task) {}
-}
-
-/*测试代码，请勿修改*/
+/* 测试代码：请勿修改 */
 const timeout = (time) =>
   new Promise((resolve) => {
     setTimeout(resolve, time);
@@ -25,9 +20,9 @@ addTask(1000, '1');
 addTask(500, '2');
 addTask(300, '3');
 addTask(400, '4');
-// output:2 3 1 4
-//一开始，1、2两个任务进入队列
-//500ms时，2完成，输出2，任务3进队
-//800ms时，3完成，输出3，任务4进队
-//1000ms时，1完成，输出1
-//1200ms时，4完成，输出4
+// output: 2 3 1 4
+// 一开始，1、2 两个任务进入队列
+// 500ms 时，2 完成，输出 2，任务 3 进队
+// 800ms 时，3 完成，输出 3，任务 4 进队
+// 1000ms 时，1 完成，输出 1
+// 1200ms 时，4 完成，输出 4

@@ -24,8 +24,12 @@ function quickSort(numbers) {
   return [...quickSort(left), ...middle, ...quickSort(right)];
 }
 
-console.log(quickSort([5, 5, 1]));
-console.log(quickSort([9, 8, 7, 6, 5]));
+module.exports = { quickSort };
+
+if (require.main === module) {
+  console.log(quickSort([5, 5, 1]));
+  console.log(quickSort([9, 8, 7, 6, 5]));
+}
 
 /*
 ================================================================================
